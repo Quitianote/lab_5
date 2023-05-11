@@ -10,11 +10,13 @@ CONFIG += c++17
 
 SOURCES += \
     bomberman.cpp \
+    cubos.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     bomberman.h \
+    cubos.h \
     mainwindow.h
 
 FORMS += \
