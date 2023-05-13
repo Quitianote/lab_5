@@ -8,6 +8,7 @@
 #include <QGraphicsRectItem>
 #include <QDebug>
 #include "bomberman.h"
+#include "cubos.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -26,15 +27,21 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    bool col_soli();
+
+    void crear_orilla();
     void keyPressEvent(QKeyEvent *event);
 
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
 
+    cubos *cubo;
     bomberman *jugador;
     int vel;
     int vel_auto;
+
+    QList<cubos*> cubo_orilla;
 };
 
 #endif // MAINWINDOW_H

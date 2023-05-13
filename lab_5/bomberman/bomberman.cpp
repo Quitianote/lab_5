@@ -49,6 +49,6 @@ void bomberman::setY(int value)
 }
 
 void bomberman::setScale(qreal scale) {
-    QGraphicsPixmapItem::setScale(scale); // Usa la implementación del método en la clase base
+    QGraphicsPixmapItem::setScale(scale);
 }
 

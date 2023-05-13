@@ -112,7 +112,9 @@ compiler_rcc_clean:
 	-$(DEL_FILE) debug\qrc_resources.cpp
 debug/qrc_resources.cpp: ../bomberman/resources.qrc \
 		D:/qt/6.2.4/mingw_64/bin/rcc.exe \
-		../bomberman/images/character.png
+		../bomberman/images/character.png \
+		../bomberman/images/cube.png \
+		../bomberman/images/cube32.png
 	D:\qt\6.2.4\mingw_64\bin\rcc.exe -name resources ..\bomberman\resources.qrc -o debug\qrc_resources.cpp
 
 compiler_moc_predefs_make_all: debug/moc_predefs.h
@@ -268,6 +270,7 @@ debug/moc_mainwindow.cpp: ../bomberman/mainwindow.h \
 		../bomberman/bomberman.h \
 		D:/qt/6.2.4/mingw_64/include/QtWidgets/QGraphicsPixmapItem \
 		D:/qt/6.2.4/mingw_64/include/QtWidgets/QGraphicsItem \
+		../bomberman/cubos.h \
 		debug/moc_predefs.h \
 		D:/qt/6.2.4/mingw_64/bin/moc.exe
 	D:\qt\6.2.4\mingw_64\bin\moc.exe $(DEFINES) --include D:/Biblioteca/Desktop/Informatica/informatica2/c++/lab_5/build-bomberman-Desktop_Qt_6_2_4_MinGW_64_bit-Debug/debug/moc_predefs.h -ID:/qt/6.2.4/mingw_64/mkspecs/win32-g++ -ID:/Biblioteca/Desktop/Informatica/informatica2/c++/lab_5/bomberman -ID:/qt/6.2.4/mingw_64/include -ID:/qt/6.2.4/mingw_64/include/QtWidgets -ID:/qt/6.2.4/mingw_64/include/QtGui -ID:/qt/6.2.4/mingw_64/include/QtCore -I. -ID:/qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -ID:/qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -ID:/qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -ID:/qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -ID:/qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -ID:/qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\bomberman\mainwindow.h -o debug\moc_mainwindow.cpp
@@ -409,7 +412,110 @@ debug/bomberman.o: ../bomberman/bomberman.cpp ../bomberman/bomberman.h \
 		D:/qt/6.2.4/mingw_64/include/QtGui/qfontmetrics.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\bomberman.o ..\bomberman\bomberman.cpp
 
-debug/cubos.o: ../bomberman/cubos.cpp ../bomberman/cubos.h
+debug/cubos.o: ../bomberman/cubos.cpp ../bomberman/cubos.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/QObject \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qobject.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qobjectdefs.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qnamespace.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qglobal.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qconfig-bootstrapped.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qconfig.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qtcore-config.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qsystemdetection.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qprocessordetection.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qcompilerdetection.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qtypeinfo.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qcontainerfwd.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qsysinfo.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qlogging.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qflags.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qatomic.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qbasicatomic.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qatomic_bootstrap.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qgenericatomic.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qatomic_cxx11.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qglobalstatic.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qnumeric.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qversiontagging.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qtmetamacros.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qobjectdefs_impl.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qstring.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qchar.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qstringview.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qbytearray.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qrefcount.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qarraydata.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qpair.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qarraydatapointer.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qarraydataops.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qcontainertools_impl.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qbytearrayalgorithms.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qbytearrayview.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qstringliteral.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qstringalgorithms.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qanystringview.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qutf8stringview.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qstringtokenizer.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qstringbuilder.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qlist.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qhashfunctions.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qiterator.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qbytearraylist.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qstringlist.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qalgorithms.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qstringmatcher.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qcoreevent.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qscopedpointer.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qmetatype.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qcompare.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qvarlengtharray.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qscopeguard.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qdatastream.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qiodevicebase.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qiterable.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qmetacontainer.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qcontainerinfo.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qtaggedpointer.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qmath.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qobject_impl.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qbindingstorage.h \
+		D:/qt/6.2.4/mingw_64/include/QtWidgets/QGraphicsPixmapItem \
+		D:/qt/6.2.4/mingw_64/include/QtWidgets/qgraphicsitem.h \
+		D:/qt/6.2.4/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
+		D:/qt/6.2.4/mingw_64/include/QtGui/qtguiglobal.h \
+		D:/qt/6.2.4/mingw_64/include/QtGui/qtgui-config.h \
+		D:/qt/6.2.4/mingw_64/include/QtWidgets/qtwidgets-config.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qvariant.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qmap.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qshareddata.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qshareddata_impl.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qhash.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qdebug.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qtextstream.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qstringconverter.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qset.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qcontiguouscache.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qsharedpointer.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qsharedpointer_impl.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qrect.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qmargins.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qsize.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qpoint.h \
+		D:/qt/6.2.4/mingw_64/include/QtGui/qpainterpath.h \
+		D:/qt/6.2.4/mingw_64/include/QtGui/qtransform.h \
+		D:/qt/6.2.4/mingw_64/include/QtGui/qpolygon.h \
+		D:/qt/6.2.4/mingw_64/include/QtGui/qregion.h \
+		D:/qt/6.2.4/mingw_64/include/QtGui/qwindowdefs.h \
+		D:/qt/6.2.4/mingw_64/include/QtGui/qwindowdefs_win.h \
+		D:/qt/6.2.4/mingw_64/include/QtCore/qline.h \
+		D:/qt/6.2.4/mingw_64/include/QtGui/qpixmap.h \
+		D:/qt/6.2.4/mingw_64/include/QtGui/qpaintdevice.h \
+		D:/qt/6.2.4/mingw_64/include/QtGui/qcolor.h \
+		D:/qt/6.2.4/mingw_64/include/QtGui/qrgb.h \
+		D:/qt/6.2.4/mingw_64/include/QtGui/qrgba64.h \
+		D:/qt/6.2.4/mingw_64/include/QtGui/qimage.h \
+		D:/qt/6.2.4/mingw_64/include/QtGui/qpixelformat.h \
+		D:/qt/6.2.4/mingw_64/include/QtWidgets/QGraphicsItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\cubos.o ..\bomberman\cubos.cpp
 
 debug/main.o: ../bomberman/main.cpp ../bomberman/mainwindow.h \
@@ -556,6 +662,7 @@ debug/main.o: ../bomberman/main.cpp ../bomberman/mainwindow.h \
 		../bomberman/bomberman.h \
 		D:/qt/6.2.4/mingw_64/include/QtWidgets/QGraphicsPixmapItem \
 		D:/qt/6.2.4/mingw_64/include/QtWidgets/QGraphicsItem \
+		../bomberman/cubos.h \
 		D:/qt/6.2.4/mingw_64/include/QtWidgets/QApplication \
 		D:/qt/6.2.4/mingw_64/include/QtWidgets/qapplication.h \
 		D:/qt/6.2.4/mingw_64/include/QtCore/qcoreapplication.h \
@@ -723,6 +830,7 @@ debug/mainwindow.o: ../bomberman/mainwindow.cpp ../bomberman/mainwindow.h \
 		../bomberman/bomberman.h \
 		D:/qt/6.2.4/mingw_64/include/QtWidgets/QGraphicsPixmapItem \
 		D:/qt/6.2.4/mingw_64/include/QtWidgets/QGraphicsItem \
+		../bomberman/cubos.h \
 		ui_mainwindow.h \
 		D:/qt/6.2.4/mingw_64/include/QtCore/QVariant \
 		D:/qt/6.2.4/mingw_64/include/QtWidgets/QApplication \
