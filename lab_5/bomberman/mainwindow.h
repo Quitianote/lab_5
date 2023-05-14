@@ -19,18 +19,19 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
-private slots:
-    void hmov();
-
-
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    bool col_soli();
+    bool col_est();
 
     void crear_orilla();
+
     void keyPressEvent(QKeyEvent *event);
+
+    void crear_est();
+
+
 
 private:
     Ui::MainWindow *ui;
@@ -42,6 +43,7 @@ private:
     int vel_auto;
 
     QList<cubos*> cubo_orilla;
+    QList<cubos*> cubo_est;
 };
 
 #endif // MAINWINDOW_H

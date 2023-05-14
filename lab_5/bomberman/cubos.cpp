@@ -2,7 +2,7 @@
 #include <Qpainter>
 
 QRectF cubos::boundingRect() const {
-    return QRectF(0, 0, pixmap().width(), pixmap().height());
+    return QRectF(0, 0, pixmap().width()+10, pixmap().height()+5);
 }
 
 
