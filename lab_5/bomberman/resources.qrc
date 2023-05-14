@@ -3,5 +3,7 @@
         <file>images/character.png</file>
         <file>images/cube.png</file>
         <file>images/cube32.png</file>
+        <file>images/bomba.png</file>
+        <file>images/destru.png</file>
     </qresource>
 </RCC>

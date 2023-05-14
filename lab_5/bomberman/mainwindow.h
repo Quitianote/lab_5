@@ -9,7 +9,8 @@
 #include <QDebug>
 #include "bomberman.h"
 #include "cubos.h"
-
+#include "bomb.h"
+#include "cub_temp.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -31,17 +32,21 @@ public:
 
     void crear_est();
 
-
+private slots:
+    void explosion();
 
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
 
+    cub_temp *alfa;
     cubos *cubo;
     bomberman *jugador;
+    bomb *bomba;
     int vel;
     int vel_auto;
 
+    QTimer *timer_explo;
     QList<cubos*> cubo_orilla;
     QList<cubos*> cubo_est;
 };

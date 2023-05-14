@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include <QGraphicsScene>
 
+
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -25,6 +27,15 @@ MainWindow::MainWindow(QWidget *parent)
     scene->addItem(jugador);
 
     crear_est();//cubos estaticos crear
+
+    timer_explo =  new QTimer;
+    connect(timer_explo,SIGNAL(timeout()),this, SLOT(explosion()));
+
+    alfa = new cub_temp(nullptr);
+    alfa->setScale(2.47);
+
+    alfa->posicion(49,253);
+    scene->addItem(alfa);
 
     vel=5;
 }
@@ -64,6 +75,17 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
             jugador->setY(jugador->getY()+(vel*3));
         }
     }
+
+    if(event->key()== Qt::Key_Space){
+        if(!timer_explo->isActive()){
+            bomba = new bomb(nullptr);
+            bomba->posicion((jugador->getX() - 5),jugador->getY());
+            bomba->setScale(0.1);
+            scene->addItem(bomba);
+            timer_explo->start(2000);
+        }
+    }
+
 
     jugador->posicion();
 }
@@ -148,9 +170,17 @@ void MainWindow::crear_est(){
         cubo_est.last()->posicion(x,y);
         scene->addItem(cubo_est.last());
         x += cubo_est.last()->pixmap().width()*14;
+
     }
 }
-//primero: agrega la bomba, que despues de unos segundos desaparezca
+
+void MainWindow::explosion(){
+    delete bomba;
+    timer_explo->stop();
+}
+
+
+
 //segundo: colocar los bloques que se van a destruir
 //tercero: colocar funcion para que se destruyan los bloques
 //cuarto: metelo efectos, tiempo

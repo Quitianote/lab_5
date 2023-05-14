@@ -9,13 +9,17 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    bomb.cpp \
     bomberman.cpp \
+    cub_temp.cpp \
     cubos.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
+    bomb.h \
     bomberman.h \
+    cub_temp.h \
     cubos.h \
     mainwindow.h
 
