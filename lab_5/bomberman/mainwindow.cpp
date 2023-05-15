@@ -262,29 +262,29 @@ void MainWindow::crear_temp(){
 void MainWindow::crear_linea(){
     //if(!lines.isEmpty()) lines.clear();
     line_right = new QGraphicsLineItem(bomba->getX() + 25, bomba->getY() + 17, bomba->getX() + 60, bomba->getY() + 17);
-    QPen pen_right(Qt::red); // Color rojo
-    pen_right.setWidth(1); // Grosor de 5
+    QPen pen_right(Qt::red);
+    pen_right.setWidth(1);
     line_right->setPen(pen_right);
     line_right->setFlag(QGraphicsItem::ItemIsFocusable);
     scene->addItem(line_right);
 
     line_up = new QGraphicsLineItem(bomba->getX() + 17, bomba->getY() + 21, bomba->getX() + 17, bomba->getY() - 20);
-    QPen pen_up(Qt::red); // Color rojo
-    pen_up.setWidth(1); // Grosor de 5
+    QPen pen_up(Qt::red);
+    pen_up.setWidth(1);
     line_up->setPen(pen_up);
     line_up->setFlag(QGraphicsItem::ItemIsFocusable);
     scene->addItem(line_up);
 
     line_left = new QGraphicsLineItem(bomba->getX() + 25, bomba->getY() + 17, bomba->getX() - 25, bomba->getY() + 17);
-    QPen pen_left(Qt::red); // Color rojo
-    pen_left.setWidth(1); // Grosor de 5
+    QPen pen_left(Qt::red);
+    pen_left.setWidth(1);
     line_left->setPen(pen_left);
     line_left->setFlag(QGraphicsItem::ItemIsFocusable);
     scene->addItem(line_left);
 
     line_down = new QGraphicsLineItem(bomba->getX() + 17, bomba->getY() + 21, bomba->getX() + 17, bomba->getY() + 50);
-    QPen pen_down(Qt::red); // Color rojo
-    pen_down.setWidth(1); // Grosor de 5
+    QPen pen_down(Qt::red);
+    pen_down.setWidth(1);
     line_down->setPen(pen_down);
     line_down->setFlag(QGraphicsItem::ItemIsFocusable);
     scene->addItem(line_down);
