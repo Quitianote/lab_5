@@ -64,7 +64,7 @@ private:
 
     QTimer *timer_explo;
     QTimer *timer_linea;
-    QList<QGraphicsLineItem> *lines;
+    QList<QGraphicsLineItem*> lines;
     QList<cubos*> cubo_orilla;
     QList<cubos*> cubo_est;
     QList<cub_temp*> cubos_temp;

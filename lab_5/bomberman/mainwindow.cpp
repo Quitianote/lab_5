@@ -104,7 +104,35 @@ bool MainWindow::col_est(){
     return false;
 }
 
-bool MainWindow::col_temp1(*line_temp){
+bool MainWindow::col_temp1(QGraphicsLineItem *line_temp){//verifica que no sea solido
+    QList<cubos*>::iterator
+            it (cubo_est.begin()),
+            end (cubo_est.end());
+    for(; it != end; it ++){
+        if(line_temp->collidesWithItem((*it))) return true;
+    }
+    return false;
+}
+
+bool MainWindow::col_temp2(QGraphicsLineItem *line_temp){//ahora mira si es temp
+    if(cubos_temp.isEmpty()) return false;
+    else{
+        QList<cub_temp*>::iterator
+            it (cubos_temp.begin()),
+            end (cubos_temp.end());
+
+        for(; it != end; it ++){
+            if(line_temp->collidesWithItem((*it))){
+                cubos_temp.removeAt(cubos_temp.indexOf((*it)));
+                delete (*it);
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+bool MainWindow::col_temp3(QGraphicsLineItem *line_temp){//mira la colision del mas al fondo
     QList<cub_temp*>::iterator
             it (cubos_temp.begin()),
             end (cubos_temp.end());
@@ -113,6 +141,7 @@ bool MainWindow::col_temp1(*line_temp){
     }
     return false;
 }
+
 //verifico si la primera colision es de un objeto temp, si lo es entonces verifico si la segunda colision es temp
 //lo que miro primero deberia ser los no temp, para saber que animacion colocar, luego los no temp
 
@@ -194,6 +223,8 @@ void MainWindow::explosion(){
 
     crear_linea();
 
+    if(col_temp1(lines.last()));
+    else if(col_temp2(lines.last()));
 
 
     timer_linea->start(1500);
@@ -208,9 +239,16 @@ void MainWindow::crear_temp(){
     cubos_temp.last()->posicion(49,253);
     scene->addItem(cubos_temp.last());
 
+    cubos_temp.append(new cub_temp(nullptr));
+    cubos_temp.last()->setScale(2.47);
+
+    cubos_temp.last()->posicion(49,150);
+    scene->addItem(cubos_temp.last());
+
 }
 
 void MainWindow::crear_linea(){
+    if(!lines.isEmpty()) lines.clear();
     line_right = new QGraphicsLineItem(bomba->getX() + 25, bomba->getY() + 17, bomba->getX() + 110, bomba->getY() + 17);
     QPen pen_right(Qt::red); // Color rojo
     pen_right.setWidth(5); // Grosor de 5
@@ -238,6 +276,8 @@ void MainWindow::crear_linea(){
     line_down->setPen(pen_down);
     line_down->setFlag(QGraphicsItem::ItemIsFocusable);
     scene->addItem(line_down);
+
+    lines.append(line_right);
 }
 
 void MainWindow::dest_linea(){
