@@ -30,8 +30,6 @@ public:
 
     bool col_temp2(QGraphicsLineItem *line_temp);
 
-    bool col_temp3(QGraphicsLineItem *line_temp);
-
     void crear_orilla();
 
     void keyPressEvent(QKeyEvent *event);

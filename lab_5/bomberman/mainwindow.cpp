@@ -132,19 +132,6 @@ bool MainWindow::col_temp2(QGraphicsLineItem *line_temp){//ahora mira si es temp
     }
 }
 
-bool MainWindow::col_temp3(QGraphicsLineItem *line_temp){//mira la colision del mas al fondo
-    QList<cub_temp*>::iterator
-            it (cubos_temp.begin()),
-            end (cubos_temp.end());
-    for(; it != end; it ++){
-        if(line_temp->collidesWithItem((*it))) return true;
-    }
-    return false;
-}
-
-//verifico si la primera colision es de un objeto temp, si lo es entonces verifico si la segunda colision es temp
-//lo que miro primero deberia ser los no temp, para saber que animacion colocar, luego los no temp
-
 void MainWindow::crear_orilla(){
     int x = 0;
     int y = 400;
@@ -177,10 +164,8 @@ void MainWindow::crear_orilla(){
         cubo_orilla.last()->setScale(7.0);
         cubo_orilla.last()->posicion(-cubo_orilla.last()->pixmap().height() * 7 + x,(-cubo_orilla.last()->pixmap().width() * 7) + 7);
         scene->addItem(cubo_orilla.last());
-        x += cubo_orilla.last()->pixmap().height() * 7;
+        x += cubo_orilla.last()->pixmap().height()*7;
     }
-
-
 }
 
 void MainWindow::crear_est(){
@@ -222,9 +207,15 @@ void MainWindow::explosion(){
     delete bomba;
 
     crear_linea();
+    QList<QGraphicsLineItem*>::iterator
+            it (lines.begin()),
+            end(lines.end());
 
-    if(col_temp1(lines.last()));
-    else if(col_temp2(lines.last()));
+    for(; it != end; it ++){
+        if(col_temp1((*it)));
+        else if(col_temp2((*it)));
+        else int a;
+    }
 
 
     timer_linea->start(1500);
@@ -233,6 +224,8 @@ void MainWindow::explosion(){
 }
 
 void MainWindow::crear_temp(){
+    int x = 49;
+    int y = 350;
     cubos_temp.append(new cub_temp(nullptr));
     cubos_temp.last()->setScale(2.47);
 
@@ -242,45 +235,68 @@ void MainWindow::crear_temp(){
     cubos_temp.append(new cub_temp(nullptr));
     cubos_temp.last()->setScale(2.47);
 
-    cubos_temp.last()->posicion(49,150);
+    cubos_temp.last()->posicion(49,155);
     scene->addItem(cubos_temp.last());
 
+    for(int i = 0; i < 4; i ++){
+        cubos_temp.append(new cub_temp(nullptr));
+        cubos_temp.last()->setScale(2.47);
+
+        cubos_temp.last()->posicion(x,y);
+        scene->addItem(cubos_temp.last());
+        x += cubos_temp.last()->pixmap().width()*2.47;
+        x ++;
+    }
+
+    /*x += cubos_temp.last()->pixmap().width()*2.47;
+    for(int i = 0; i < 6; i ++){
+        cubos_temp.append(new cub_temp(nullptr));
+        cubos_temp.last()->setScale(2.47);
+
+        cubos_temp.last()->posicion(x,y);
+        scene->addItem(cubos_temp.last());
+        x += cubos_temp.last()->pixmap().width()*2.47;
+    }*/
 }
 
 void MainWindow::crear_linea(){
-    if(!lines.isEmpty()) lines.clear();
-    line_right = new QGraphicsLineItem(bomba->getX() + 25, bomba->getY() + 17, bomba->getX() + 110, bomba->getY() + 17);
+    //if(!lines.isEmpty()) lines.clear();
+    line_right = new QGraphicsLineItem(bomba->getX() + 25, bomba->getY() + 17, bomba->getX() + 60, bomba->getY() + 17);
     QPen pen_right(Qt::red); // Color rojo
-    pen_right.setWidth(5); // Grosor de 5
+    pen_right.setWidth(1); // Grosor de 5
     line_right->setPen(pen_right);
     line_right->setFlag(QGraphicsItem::ItemIsFocusable);
     scene->addItem(line_right);
 
-    line_up = new QGraphicsLineItem(bomba->getX() + 17, bomba->getY() + 21, bomba->getX() + 17, bomba->getY() - 80);
+    line_up = new QGraphicsLineItem(bomba->getX() + 17, bomba->getY() + 21, bomba->getX() + 17, bomba->getY() - 20);
     QPen pen_up(Qt::red); // Color rojo
-    pen_up.setWidth(5); // Grosor de 5
+    pen_up.setWidth(1); // Grosor de 5
     line_up->setPen(pen_up);
     line_up->setFlag(QGraphicsItem::ItemIsFocusable);
     scene->addItem(line_up);
 
-    line_left = new QGraphicsLineItem(bomba->getX() + 25, bomba->getY() + 17, bomba->getX() - 75, bomba->getY() + 17);
+    line_left = new QGraphicsLineItem(bomba->getX() + 25, bomba->getY() + 17, bomba->getX() - 25, bomba->getY() + 17);
     QPen pen_left(Qt::red); // Color rojo
-    pen_left.setWidth(5); // Grosor de 5
+    pen_left.setWidth(1); // Grosor de 5
     line_left->setPen(pen_left);
     line_left->setFlag(QGraphicsItem::ItemIsFocusable);
     scene->addItem(line_left);
 
-    line_down = new QGraphicsLineItem(bomba->getX() + 17, bomba->getY() + 21, bomba->getX() + 17, bomba->getY() + 110);
+    line_down = new QGraphicsLineItem(bomba->getX() + 17, bomba->getY() + 21, bomba->getX() + 17, bomba->getY() + 50);
     QPen pen_down(Qt::red); // Color rojo
-    pen_down.setWidth(5); // Grosor de 5
+    pen_down.setWidth(1); // Grosor de 5
     line_down->setPen(pen_down);
     line_down->setFlag(QGraphicsItem::ItemIsFocusable);
     scene->addItem(line_down);
 
     lines.append(line_right);
+    lines.append(line_up);
+    lines.append(line_left);
+    lines.append(line_down);
 }
 
 void MainWindow::dest_linea(){
+    lines.clear();
     delete line_up;
     delete line_down;
     delete line_left;
